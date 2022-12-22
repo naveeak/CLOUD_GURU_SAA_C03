@@ -16,14 +16,25 @@ aws iam create-role --role-name DEV_ROLE --assume-role-policy-document file://tr
 # creating a policy 
 aws iam create-policy --policy-name DevS3ReadAccess --policy-document file://dev_s3_read_access.json
 
+#atach role to the policy 
+aws iam attach-role-policy --role-name DEV_ROLE --policy-arn "arn:aws:iam::452785573268:policy/DevS3ReadAccess"
+
+#list policies for a role
+aws iam list-attached-role-policies --role-name DEV_ROLE
+
 #insance profile are simialr to roles that can be created from the cli and attach to a instance on the fly
 aws iam create-instance-profile --instance-profile-name DEV_PROFILE
 
 # associating profile with role
 aws iam add-role-to-instance-profile --instance-profile-name DEV_PROFILE --role-name DEV_ROLE
 
+aws iam get-instance-profile --instance-profile-name DEV_PROFILE 
+
 #assciating profile with instance on the fly
-aws ec2 associate-iam-instance-profile --iam-instance-profile Name=DEV_PROFILE --instance-id i-032b6b7a7d2702dea --region us-east-1
+aws ec2 associate-iam-instance-profile --iam-instance-profile Name=DEV_PROFILE --instance-id i-0b08dfdb19e11e7d4 --region us-east-1
+
+#descibe ec2 instance details
+aws ec2 describe-instances --instance-id i-0b08dfdb19e11e7d4
 
 #check the assumed role
 aws sts get-caller-identity
