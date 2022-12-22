@@ -1,0 +1,5 @@
+
+aws iam create-instance-profile --instance-profile-name DEV_PROFILE
+aws iam add-role-to-instance-profile --instance-profile-name DEV_PROFILE --role-name DEV_ROLE
+aws ec2 associate-iam-instance-profile --iam-instance-profile Name=DEV_PROFILE --instance-id i-032b6b7a7d2702dea --region us-east-1
+aws sts get-caller-identity
