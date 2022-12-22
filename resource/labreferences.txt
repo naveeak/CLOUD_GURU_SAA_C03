@@ -1,8 +1,11 @@
 
-Dev s3 bucket name = cfst-3035-a5558f8c32d5c5e610bdcaf302a-s3bucketdev-1m5hr8gmfi39p
+Dev s3 bucket name = cfst-3035-ef6aee913fb550f63eadabe7c96-s3bucketdev-eifqaqeq6hhp
 
-Prod s3 bucket name = cfst-3035-a5558f8c32d5c5e610bdcaf302-s3bucketprod-c51szp8sie9w
+Prod s3 bucket name = cfst-3035-ef6aee913fb550f63eadabe7c9-s3bucketprod-c0su4vfqw9ow
 
-Engineering s3 bucket name = cfst-3035-a5558f8c32d5c5e610b-s3bucketengineering-1veg1d7j05s8j
+Engineering s3 bucket name = cfst-3035-ef6aee913fb550f63ea-s3bucketengineering-kniuaamvjinz
 
-Secret s3 bucket name = cfst-3035-a5558f8c32d5c5e610bdcaf3-s3bucketsecret-8rm8ejwoxzsh
+Secret s3 bucket name = cfst-3035-ef6aee913fb550f63eadabe7-s3bucketsecret-1bx0cpt9z9g8u
+
+
+"Arn": "arn:aws:iam::452785573268:policy/DevS3ReadAccess",

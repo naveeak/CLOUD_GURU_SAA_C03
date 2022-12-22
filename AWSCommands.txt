@@ -1,0 +1,38 @@
+##
+#congire cli for commands
+aws configure
+--
+AWS Access Key ID [None]: 
+AWS Secret Access Key [None]: 
+Default region name [None]: us-east-1
+Default output format [None]: json
+
+##EC2 IAM role assumption and association
+#truct policy allow us to assume the ec2 role 
+
+# creating a role
+aws iam create-role --role-name DEV_ROLE --assume-role-policy-document file://trust_policy_ec2.json
+
+# creating a policy 
+aws iam create-policy --policy-name DevS3ReadAccess --policy-document file://dev_s3_read_access.json
+
+#insance profile are simialr to roles that can be created from the cli and attach to a instance on the fly
+aws iam create-instance-profile --instance-profile-name DEV_PROFILE
+
+# associating profile with role
+aws iam add-role-to-instance-profile --instance-profile-name DEV_PROFILE --role-name DEV_ROLE
+
+#assciating profile with instance on the fly
+aws ec2 associate-iam-instance-profile --iam-instance-profile Name=DEV_PROFILE --instance-id i-032b6b7a7d2702dea --region us-east-1
+
+#check the assumed role
+aws sts get-caller-identity
+
+#list all bucket fr this role must have listbucket permission in policies
+aws s3 ls
+
+#list all files in a boucket
+aws s3 ls s3://cfst-3035-a5558f8c32d5c5e610bdcaf302a-s3bucketdev-1m5hr8gmfi39p --recursive --human-readable --summarize
+
+
+
