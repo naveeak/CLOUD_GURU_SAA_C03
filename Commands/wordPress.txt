@@ -1,0 +1,15 @@
+sudo apt update
+sudo apt install apache2 libapache2-mod-php php-mysql -y
+sudo mv /wordpress /var/www
+sudo mv /var/www/wordpress/000-default.conf /etc/apache2/sites-enabled/
+sudo apache2ctl restart
+sudo vi /var/www/wordpress/wp-config.php
+
+
+export MYSQL_HOST=wordpress.ck90fuwbmdgq.us-east-1.rds.amazonaws.com
+mysql --user=wordpress --password=wordpress wordpress
+CREATE USER 'wordpress' IDENTIFIED BY 'wordpress';
+GRANT ALL PRIVILEGES ON wordpress.* TO wordpress;
+FLUSH PRIVILEGES;
+Exit
+
